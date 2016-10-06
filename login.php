@@ -1,5 +1,5 @@
 <?php
-	//võtab ja kopeerib faili sisu
+	//vÃµtab ja kopeerib faili sisu
 	
 	require ("../../config.php");
 	require("functions.php");
@@ -16,7 +16,7 @@
 	//Loogimine sisse
 	if (isset ($_POST["loginEmail"])) {
 		if (empty ($_POST["loginEmail"])) {
-			$loginEmailError = "* Väli on kohustuslik!";
+			$loginEmailError = "* VÃ¤li on kohustuslik!";
 		
 	} else {
 		//kui Email on korras
@@ -27,11 +27,11 @@
 	
 	if (isset ($_POST["loginPassword"])) {
 		if (empty ($_POST["loginPassword"])) {
-			$loginPasswordError = "* Väli on kohustuslik!";
+			$loginPasswordError = "* VÃ¤li on kohustuslik!";
 		} else {
 			
 		}if (strlen ($_POST["loginPassword"]) <8)
-			$loginPasswordError = "* Parool peab olema vähemalt 8 tähemärkki pikk!";
+			$loginPasswordError = "* Parool peab olema vÃ¤hemalt 8 tÃ¤hemÃ¤rkki pikk!";
 	}
 	
 	//Kasutaja registreerimine
@@ -39,7 +39,7 @@
 	
 	if (isset ($_POST["signupEmail"])) {
 		if (empty ($_POST["signupEmail"])) {
-			$signupEmailError = "* Väli on kohustuslik!";
+			$signupEmailError = "* VÃ¤li on kohustuslik!";
 		} else {
 		//kui Email on korras
 		$signupEmail = $_POST ["signupEmail"];
@@ -50,24 +50,24 @@
 	
 	if (isset ($_POST["signupPassword"])) {
 		if (empty ($_POST["signupPassword"])) {
-			$signupPasswordError = "* Väli on kohustuslik!";
+			$signupPasswordError = "* VÃ¤li on kohustuslik!";
 		} else {
 			
 		}if (strlen ($_POST["signupPassword"]) <8)
-			$signupPasswordError = "* Parool peab olema vähemalt 8 tähemärkki pikk!";
+			$signupPasswordError = "* Parool peab olema vÃ¤hemalt 8 tÃ¤hemÃ¤rkki pikk!";
 	}
 	
 	
 	if (isset ($_POST["signupNickName"])) {
 		if (empty ($_POST["signupNickName"])) {
-			$signupNickNameError = "* Väli on kohustuslik!";
+			$signupNickNameError = "* VÃ¤li on kohustuslik!";
 		} else {
 			
 			}if (strlen ($_POST["signupNickName"]) <8)
-				$signupNickNameError = "* Nimi peab olema vähemalt 8 tähemärkki pikk!";
+				$signupNickNameError = "* Nimi peab olema vÃ¤hemalt 8 tÃ¤hemÃ¤rkki pikk!";
 	}
 	
-	// Kui pole ühtegi viga
+	// Kui pole Ã¼htegi viga
 	if( isset($_POST["signupEmail"]) &&
 		isset($_POST["signupPassword"]) &&
 		$signupEmailError == "" &&		
@@ -83,7 +83,7 @@
 			$password = hash("sha512", $_POST["signupPassword"]);
 			echo "password hashed: ".$password."<br>";
 			
-			//ÜHENDUS
+			//ÃœHENDUS
 			
 			$database = "if16_ksenbelo_4";
 			$mysqli = new mysqli($serverHost, $serverUsername, $serverPassword, $database);
@@ -100,7 +100,7 @@
 			$stmt->bind_param("ss", $signupEmail, $password);
 			
 				if($stmt->execute()) {
-				echo "salvestamine õnnestus";
+				echo "salvestamine Ãµnnestus";
 			
 				} else {
 				echo "ERROR ".$stmt->error;
@@ -172,13 +172,13 @@
 					<input name="signupNickName" placeholder="Nickname"> 
 						<br><font color="red"><?php echo $signupNickNameError; ?></font></br>
 					
-					<p><label for="sünnipäev">Sünnipäev:</label><br>
-					<input name= "sünnipäev" type="date" id="sünnipäev" required>
+					<p><label for="sÃ¼nnipÃ¤ev">SÃ¼nnipÃ¤ev:</label><br>
+					<input name= "sÃ¼nnipÃ¤ev" type="date" id="sÃ¼nnipÃ¤ev" required>
 					
 					
 					<p><label for="signupSugu">Sugu:</label><br>
 					<select name = "signupSugu"  id="signupSugu" required><br><br>
-					<option value="">Näita</option>
+					<option value="">NÃ¤ita</option>
 					<option value="Mees">Mees</option>
 					<option value="Naine">Naine</option>
 					</select><br><br>
@@ -189,9 +189,9 @@
 				<h1>MVP idee</h1>
 				<form method="POST" >
 				<p class="MVPborder"><br>Minu MVP idee on luua veebileht, kus inimesed saaksid kirjutada
-				ülevaaded kohtades, kus nad sööma käisid, kas meeldinud toit/personaal/hind.
-				Tulevad kategooriad nagu asukoht(riig/linnas), tüüp (restoran/kohvik jne), 
-				hind, pallid (kui palju pallid antsid söögikohale).</p>
+				Ã¼levaaded kohtades, kus nad sÃ¶Ã¶ma kÃ¤isid, kas meeldinud toit/personaal/hind.
+				Tulevad kategooriad nagu asukoht(riig/linnas), tÃ¼Ã¼p (restoran/kohvik jne), 
+				hind, pallid (kui palju pallid antsid sÃ¶Ã¶gikohale).</p>
 				<br><br>
 				</center>	
 				</form>

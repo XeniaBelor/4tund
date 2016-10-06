@@ -27,3 +27,20 @@
 	Tere tulemast <?=$_SESSION["userEmail"];?>!
 	<a href="?logout=1">logi välja</a>
 </p>
+
+<h2>Salvesta sündmus</h2>
+
+<form method="POST" >
+	
+	<label>Vanus</label><br>
+	<input name="age" type="number">
+	
+	<br><br>
+	<label>Värv</label><br>
+	<input name="color" type="color">
+	
+	<br><br>
+	
+	<input type="submit" value="Salvesta">
+
+</form>
