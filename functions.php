@@ -1,102 +1,142 @@
-<?php 
+<?php
 	
+	require("../../config.php");
 	session_start();
 	
-	$database = "if16_ksenbelo_4";
-	// functions.php
+	$email = $password = $birthday = $signupSugu = "";
 	
-	function signup($email, $password) {
+	$database = "if16_ksenbelo_4";
+	
+	function signup ($email, $password,$birthday,$signupSugu) {
 		
-		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		
-		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUE (?, ?)");
+		$mysqli = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
+		$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password, bithday,gender) VALUES (?, ?, ?, ?)");
 		echo $mysqli->error;
-		$stmt->bind_param("ss", $email, $password);
-		if ( $stmt->execute() ) {
-			echo "õnnestus";
+		$stmt->bind_param("ssss",$email, $password,$birthday,$signupSugu);
+		
+		if ($stmt->execute()) {
+			echo "salvestamine Ãµnnestus";
 		} else {
 			echo "ERROR ".$stmt->error;
 		}
 		
 	}
 	
-		function login($email, $password) {
+	
+	function login($email, $password) {
 		
-		$notice = "";
+		$error = "";
 		
-		$mysqli = new mysqli($GLOBALS["serverHost"], $GLOBALS["serverUsername"], $GLOBALS["serverPassword"], $GLOBALS["database"]);
-		
+		$mysqli = new mysqli($GLOBALS["serverHost"],$GLOBALS["serverUsername"],$GLOBALS["serverPassword"],$GLOBALS["database"]);
 		$stmt = $mysqli->prepare("
-			SELECT id, email, password, created
+			SELECT id, email, password, created 
 			FROM user_sample
 			WHERE email = ?
 		");
-		
 		echo $mysqli->error;
 		
-		//asendan küsimärgi
+		//asendan kÃ¼simÃ¤rgi
 		$stmt->bind_param("s", $email);
 		
-		//rea kohta tulba väärtus
+		//mÃ¤Ã¤ran tupladele muutujad
 		$stmt->bind_result($id, $emailFromDb, $passwordFromDb, $created);
-		
 		$stmt->execute();
 		
-		//ainult SELECT'i puhul
+		//kÃ¼sin rea andmeid
 		if($stmt->fetch()) {
-			// oli olemas, rida käes
-			//kasutaja sisestas sisselogimiseks
+			//oli rida
+		
+			// vÃµrdlen paroole
 			$hash = hash("sha512", $password);
-			
-			if ($hash == $passwordFromDb) {
-				echo "Kasutaja $id logis sisse";
+			if($hash == $passwordFromDb) {
+				
+				echo "kasutaja ".$id." logis sisse";
+				
 				
 				$_SESSION["userId"] = $id;
-				$_SESSION["userEmail"] = $emailFromDb;
-				//echo "ERROR";
+				$_SESSION["email"] = $emailFromDb;
 				
+				//suunaks uuele lehele
 				header("Location: data.php");
+				exit();
 				
 			} else {
-				$notice = "parool vale";
+				$error = "parool vale";
 			}
 			
-			
-		} else {
-			
-			//ei olnud ühtegi rida
-			$notice = "Sellise emailiga ".$email." kasutajat ei ole olemas";
-		}
 		
+		} else {
+			//ei olnud 
+			
+			$error = "sellise emailiga ".$email." kasutajat ei olnud";
+		}
 		
 		$stmt->close();
 		$mysqli->close();
 		
-		return $notice;
+		return $error;
 		
 		
 	}
 	
-	/*function sum($x, $y) {
+	
+		function register_food($username,$food) {
 		
-		return $x + $y;
+		$mysqli = new mysqli($GLOBALS["serverHost"], 
+		$GLOBALS["serverUsername"], 
+		$GLOBALS["serverPassword"], 
+		$GLOBALS["database"]);
 		
+		$stmt = $mysqli ->prepare("INSERT INTO register_food (nickname, food, user_Id) VALUE(?,?,?)");
+		echo $mysqli->error;
+		$stmt->bind_param("ssi", $username, $food, $_SESSION["userId"]);
+	
+		if($stmt->execute() ) {
+			echo "Ã•nnestus!","<br>";			
+		} else{
+			echo "ERROR".$stmterror;
+		}
+	
 	}
 	
-	echo sum(12312312,12312355553);
-	echo "<br>";
+		function saveregister_food(){
+		
+		$mysqli = new mysqli($GLOBALS["serverHost"], 
+		$GLOBALS["serverUsername"], 
+		$GLOBALS["serverPassword"], 
+		$GLOBALS["database"]);
+		
+		$stmt = $mysqli->prepare("
+			SELECT nickname, food
+			FROM register_food
+			");
+		
+		$stmt->bind_result($username, $food);
+		$stmt->execute();
+		
+		$results = array();
+		
+		while ($stmt->fetch()) {
+			
+			$human = new StdClass();
+			$human->nickname = $username;
+			$human->food = $food;
+			
+			array_push($results, $human);	
+			}
+			
+		return $results;
+		
+		}
 	
-	
-	function hello($firstname, $lastname) {
-		return 
-		"Tere tulemast "
-		.$firstname
-		." "
-		.$lastname
-		."!";
-	}
-	
-	echo hello("Ksenia", "Belorusskaja");
-	*/
-	
+
+		function cleanInput($input) {
+		
+
+		$input = trim($input);
+		$input = stripslashes($input);
+		$input = htmlspecialchars($input);
+		return $input;
+		
+		}
 ?>
