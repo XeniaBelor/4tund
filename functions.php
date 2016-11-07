@@ -78,7 +78,7 @@
 	}
 	
 	//REGISTREERIMISE ANDMED
-	function register_food($username, $birthday, $food, $userId){
+	function register_food($username, $birthday, $food){
 		
 		$mysqli = new mysqli($GLOBALS["serverHost"], 
 		$GLOBALS["serverUsername"], 
@@ -87,7 +87,7 @@
 		
 		$stmt = $mysqli ->prepare("INSERT INTO user_food_finish (username, birthday, food, user_Id) VALUE(?, ?, ?, ?)");
 		echo $mysqli->error;
-		$stmt->bind_param("sssi", $username, , $birthday, $food, $_SESSION["userId"]);
+		$stmt->bind_param("sssi", $username, $birthday, $food, $_SESSION["userId"]);
 	
 		if($stmt->execute() ) {
 			
@@ -107,10 +107,11 @@
 		$GLOBALS["database"]);
 		
 		$stmt = $mysqli->prepare("
-		SELECT id, username, birthday, food, user_Id
+		SELECT id, username, birthday, food
+		FROM user_food_finish
 		");
 		
-		$stmt->bind_result($id, $username, $birthday, $food, $userId);
+		$stmt->bind_result($id, $username, $birthday, $food);
 		$stmt->execute();
 		
 		$results = array();
@@ -122,7 +123,7 @@
 			$human->username = $username;
 			$human->birthday = $birthday;
 			$human->food = $food;
-			$human->userId = $userId;
+			$human->userId = $_SESSION["userId"];
 			
 			array_push($results, $human);	
 		}
