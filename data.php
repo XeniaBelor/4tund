@@ -55,15 +55,6 @@
 	Tere tulemast <?=$_SESSION["email"];?>!
 	<a href="?logout=1">Logi välja</a>
 </p>
-<style>
-body {
-		background-image:	url("https://pp.vk.me/c837125/v837125905/518b/bJR1ZtqBM9w.jpg");
-		background-repeat: no-repeat;
-		background-position: right top;
-		background-attachment: fixed;
-		}
-
-</style>
 <body>
 <title>Registreerimise lõpp</title>
 
@@ -81,53 +72,53 @@ body {
 	<p><label for="food">Vali oma lemmiku kööki:</label><br>
 	<select name="food" id="food" required>
 		<option value="">Näita</option>
-		<option value="Abhaasia k">Abhaasia köök</option>
-		<option value="Australian k">Australian köök</option>
-		<option value="Austria k">Austria köök</option>
-		<option value="Aserbaidzaani k<">Aserbaidžaani köök</option>
-		<option value="Ameerika k<">Ameerika köök</option>
-		<option value="Araabia k">Araabia köök</option>
-		<option value="Argentiina k">Argentiina köök</option>
-		<option value="Armeenia k">Armeenia köök</option>
-		<option value="Valgevene k">Valgevene köök</option>
-		<option value="Bulgaaria k">Bulgaaria köök</option>
-		<option value="Brasiilia k">Brasiilia köök</option>
-		<option value="Ungari k">Ungari köök</option>
-		<option value="Havai k">Havai köök</option>
-		<option value="Hollandi k">Hollandi köök</option>
-		<option value="Kreeka k">Kreeka köök</option>
-		<option value="Gruusia k">Gruusia köök</option>
-		<option value="Taani k">Taani köök</option>
-		<option value="Juudi k">Juudi köök</option>
-		<option value="Iiri k">Iiri köök</option>
-		<option value="India k">India köök</option>
-		<option value="Inglise k">Inglise köök</option>
-		<option value="Itaalia k">Itaalia köök</option>
-		<option value="Hispaania k">Hispaania köök</option>
-		<option value="Kaukaasia k">Kaukaasia köök</option>
-		<option value="Hiina k">Hiina köök</option>
-		<option value="Korea k">Korea köök</option>
-		<option value="Kuuba k">Kuuba köök</option>
-		<option value="Lati k">Läti köök</option>
-		<option value="Leedu k">Leedu köök</option>
-		<option value="Mehhiko k">Mehhiko köök</option>
-		<option value="Moldaavia k">Moldaavia köök</option>
-		<option value="Mongoli k">Mongoli köök</option>
-		<option value="Saksa k">Saksa köök</option>
-		<option value="Norra k">Norra köök</option>
-		<option value="Poola k">Poola köök</option>
-		<option value="Portugali k">Portugali köök</option>
-		<option value="Rumeenia k">Rumeenia köök</option>
-		<option value="Vene k">Vene köök</option>
-		<option value="Tyrgi k">Türgi köök</option>
-		<option value="Ukraina k">Ukraina köök</option>
-		<option value="Soome k">Soome köök</option>
-		<option value="Prantsuse k">Prantsuse köök</option>
-		<option value="Tsehhi k">Tšehhi köök</option>
-		<option value="Rootsi k">Rootsi köök</option>
-		<option value="Soti k">Šoti köök</option>
-		<option value="Eesti k">Eesti köök</option>
-		<option value="Jaapani k">Jaapani köök</option>
+		<option value="Abhaasia kook">Abhaasia köök</option>
+		<option value="Australian kook">Australian köök</option>
+		<option value="Austria kook">Austria köök</option>
+		<option value="Aserbaidzaani kook<">Aserbaidžaani köök</option>
+		<option value="Ameerika kook<">Ameerika köök</option>
+		<option value="Araabia kook">Araabia köök</option>
+		<option value="Argentiina kook">Argentiina köök</option>
+		<option value="Armeenia kook">Armeenia köök</option>
+		<option value="Valgevene kook">Valgevene köök</option>
+		<option value="Bulgaaria kook">Bulgaaria köök</option>
+		<option value="Brasiilia kook">Brasiilia köök</option>
+		<option value="Ungari kook">Ungari köök</option>
+		<option value="Havai kook">Havai köök</option>
+		<option value="Hollandi kook">Hollandi köök</option>
+		<option value="Kreeka kook">Kreeka köök</option>
+		<option value="Gruusia kook">Gruusia köök</option>
+		<option value="Taani kook">Taani köök</option>
+		<option value="Juudi kook">Juudi köök</option>
+		<option value="Iiri kook">Iiri köök</option>
+		<option value="India kook">India köök</option>
+		<option value="Inglise kook">Inglise köök</option>
+		<option value="Itaalia kook">Itaalia köök</option>
+		<option value="Hispaania kook">Hispaania köök</option>
+		<option value="Kaukaasia kook">Kaukaasia köök</option>
+		<option value="Hiina kook">Hiina köök</option>
+		<option value="Korea kook">Korea köök</option>
+		<option value="Kuuba kook">Kuuba köök</option>
+		<option value="Lati kook">Läti köök</option>
+		<option value="Leedu kook">Leedu köök</option>
+		<option value="Mehhiko kook">Mehhiko köök</option>
+		<option value="Moldaavia kook">Moldaavia köök</option>
+		<option value="Mongoli kook">Mongoli köök</option>
+		<option value="Saksa kook">Saksa köök</option>
+		<option value="Norra kook">Norra köök</option>
+		<option value="Poola kook">Poola köök</option>
+		<option value="Portugali kook">Portugali köök</option>
+		<option value="Rumeenia kook">Rumeenia köök</option>
+		<option value="Vene kook">Vene köök</option>
+		<option value="Tyrgi kook">Türgi köök</option>
+		<option value="Ukraina kook">Ukraina köök</option>
+		<option value="Soome kook">Soome köök</option>
+		<option value="Prantsuse kook">Prantsuse köök</option>
+		<option value="Tsehhi kook">Tšehhi köök</option>
+		<option value="Rootsi kook">Rootsi köök</option>
+		<option value="Soti kook">Šoti köök</option>
+		<option value="Eesti kook">Eesti köök</option>
+		<option value="Jaapani kook">Jaapani köök</option>
 	</select>
 	
 	<br><br>

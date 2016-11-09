@@ -4,14 +4,12 @@
 	session_start();
 	
 	$database = "if16_ksenbelo_4";
-
 	//MUUTUJAD
 	$email = $password = $signupSugu = "";
 	$username = $birthday = $food = $userId = "";
 	
 	//REGISTREERIMINE
 	function signup ($email,$password,$signupSugu) {
-
 		$mysqli = new mysqli($GLOBALS["serverHost"],
 		$GLOBALS["serverUsername"],
 		$GLOBALS["serverPassword"],
@@ -30,7 +28,6 @@
 	
 	//LOOGIMINE
 	function login($email, $password){
-
 		$mysqli = new mysqli($GLOBALS["serverHost"],
 		$GLOBALS["serverUsername"],
 		$GLOBALS["serverPassword"],
@@ -47,9 +44,7 @@
 		$stmt->bind_param("s", $email);
 		$stmt->bind_result($id, $emailFromDb, $passwordFromDb, $created);
 		$stmt->execute();
-
 		if($stmt->fetch()) {
-
 			$hash = hash("sha512", $password);
 			if($hash == $passwordFromDb) {
 				
@@ -85,18 +80,15 @@
 		$GLOBALS["serverPassword"], 
 		$GLOBALS["database"]);
 		
-		$stmt = $mysqli ->prepare("INSERT INTO user_food_finish (username, birthday, food, user_Id) VALUE(?, ?, ?, ?)");
+		$stmt = $mysqli ->prepare("INSERT INTO user_food_finish (username, birthday, food) VALUE(?, ?, ?)");
 		echo $mysqli->error;
-		$stmt->bind_param("sssi", $username, $birthday, $food, $_SESSION["userId"]);
+		$stmt->bind_param("sss", $username, $birthday, $food);
 	
 		if($stmt->execute() ) {
 			
 			echo "Õnnestus!","<br>";			
 		
-		} else{
-			
-			echo "ERROR".$stmterror;
-		}	
+		}
 	}
 	
 	function All_info(){
@@ -119,11 +111,10 @@
 		while ($stmt->fetch()) {
 			
 			$human = new StdClass();
-			$human->id = $id;
 			$human->username = $username;
 			$human->birthday = $birthday;
 			$human->food = $food;
-			$human->userId = $_SESSION["userId"];
+			$human->id = $id;
 			
 			array_push($results, $human);	
 		}
@@ -134,7 +125,6 @@
 	
 	
 	function cleanInput($input) {
-
 		$input = trim($input);
 		$input = stripslashes($input);
 		$input = htmlspecialchars($input);
